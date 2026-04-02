@@ -6,10 +6,9 @@ import { X } from "lucide-react";
 interface ResumeModalProps {
   isOpen: boolean;
   onClose: () => void;
-  resumeUrl?: string;
 }
 
-export default function ResumeModal({ isOpen, onClose, resumeUrl }: ResumeModalProps) {
+export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
   const resumeContent = `
     RAYNEL MADELO
     BSIT 3rd Year Student | Web Developer
@@ -37,7 +36,7 @@ export default function ResumeModal({ isOpen, onClose, resumeUrl }: ResumeModalP
     
     PROJECTS
     • Portfolio Website - Built with Next.js and React
-    • FCFS CPU Scheduling Algorithm Visualizer - Interactive algorithm demonstration
+    • Study apps and dashboards - Practice projects for coursework
     
     ABOUT
     Passionate about web development and creating innovative digital solutions.
@@ -54,21 +53,22 @@ export default function ResumeModal({ isOpen, onClose, resumeUrl }: ResumeModalP
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+            className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
           />
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="fixed inset-4 md:inset-8 lg:inset-16 z-50 bg-card rounded-lg shadow-2xl overflow-hidden flex flex-col"
+            className="fixed inset-4 z-50 flex flex-col overflow-hidden rounded-lg bg-card shadow-2xl md:inset-8 lg:inset-16"
           >
-            <div className="flex items-center justify-between p-4 border-b border-border">
+            <div className="flex items-center justify-between border-b border-border p-4">
               <h2 className="text-xl font-semibold">My Resume</h2>
               <button
+                type="button"
                 onClick={onClose}
-                className="p-2 hover:bg-accent rounded-lg transition-colors"
+                className="rounded-lg p-2 transition-colors hover:bg-accent"
               >
-                <X className="w-5 h-5" />
+                <X className="h-5 w-5" />
               </button>
             </div>
             <div className="flex-1 overflow-auto p-8">
@@ -82,4 +82,3 @@ export default function ResumeModal({ isOpen, onClose, resumeUrl }: ResumeModalP
     </AnimatePresence>
   );
 }
-
